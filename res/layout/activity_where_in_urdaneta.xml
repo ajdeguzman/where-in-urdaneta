@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    
+    android:background="#1B4E85"
+    tools:context="edu.ucuccs.whereinurdaneta.WhereInUrdaneta" >
+
+     <fragment
+         android:id="@+id/map"
+         android:name="com.google.android.gms.maps.MapFragment"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentTop="true" />
+
+   <EditText
+       android:id="@+id/editText"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dp"
+       android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+       android:background="@drawable/rounded_edittext"
+       android:inputType="text"
+       android:padding="3dp" >
+
+    </EditText>
+    
+    <ImageView
+        android:id="@+id/imgButton"
+        android:onClick="click_search"
+        android:padding="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editText"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_alignRight="@+id/editText"
+        android:src="@drawable/ic_search" />
+   
+
+</RelativeLayout>

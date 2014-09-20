@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Where in Urdaneta?</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_colleges_and_universities">CollegesAndUniversities</string>
+    <string name="title_activity_universities">Universities</string>
+    <string name="title_activity_recreational_area">RecreationalArea</string>
+    <string name="title_activity_restaurant">Restaurant</string>
+    <string name="title_activity_terminal">Terminal</string>
+    <string name="title_activity_hotel">Hotel</string>
+    <string name="title_activity_mall">Mall</string>
+    <string name="title_activity_where_in_urdaneta">WhereInUrdaneta</string>
+
+</resources>
