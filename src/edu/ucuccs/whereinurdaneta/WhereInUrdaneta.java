@@ -2,35 +2,43 @@ package edu.ucuccs.whereinurdaneta;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.parse.ParseGeoPoint;
+import com.parse.ParseObject;
 
 public class WhereInUrdaneta extends Activity {
 
 	EditText editText;
 	ImageView img_btn;
-
+	RelativeLayout rel;
 	private GoogleMap GMap;
 	private static final LatLng URDANETA = new LatLng(15.9751895, 120.5703162);
+	ParseObject p;
+	final String APPLICATION_ID = "7BVKmFj5lddiYXKIUHSRWwTh8AbilJUbf0L5iPxX";
+	final String CLIENT_KEY = "XAessF2ggXY69PXz8aeyD2uptaKi8YohToG3ePS5";
 
-	LatLng PSU = new LatLng(15.9876009, 120.5738445);
+	LatLng PSU = new LatLng(15.9782426, 120.5715607);
 	LatLng PUNP = new LatLng(15.9847439, 120.5726536);
-	LatLng UCU = new LatLng(15.979592, 120.5611147);
+	LatLng ABE = new LatLng(15.9826905, 120.5714945);
+	LatLng UCU = new LatLng(15.980504, 120.560681);
+	LatLng Manantan = new LatLng(15.980216, 120.5717094);
 
-	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_where_in_urdaneta);
 
 		editText = (EditText) findViewById(R.id.editText);
 		img_btn = (ImageView) findViewById(R.id.imgButton);
+		rel = (RelativeLayout) findViewById(R.id.layoutbelow);
+		rel.setVisibility(View.VISIBLE);
 
 		// Getting reference to the SupportMapFragment of activity_main.xml
 		MapFragment G_Map = (MapFragment) getFragmentManager()
@@ -43,55 +51,13 @@ public class WhereInUrdaneta extends Activity {
 		GMap.animateCamera(CameraUpdateFactory.zoomIn());
 		GMap.animateCamera(CameraUpdateFactory.zoomTo(14), 2000, null);
 
-		GroundOverlayOptions overlay_punp = new GroundOverlayOptions().image(
-				BitmapDescriptorFactory.fromResource(R.drawable.punp_logo))
-				.position(PUNP, 300f, 300f);
-		GMap.addGroundOverlay(overlay_punp);
+	}
 
-		GroundOverlayOptions overlay_UCU = new GroundOverlayOptions().image(
-				BitmapDescriptorFactory.fromResource(R.drawable.ucu_logo))
-				.position(UCU, 300f, 300f);
-		GMap.addGroundOverlay(overlay_UCU);
-
-		GroundOverlayOptions overlay_PSU = new GroundOverlayOptions().image(
-				BitmapDescriptorFactory.fromResource(R.drawable.psu_logo))
-				.position(PSU, 300f, 300f);
-		GMap.addGroundOverlay(overlay_PSU);
-		
-		
-		
-		
-		// Sir hindi ko po alam yung codes ng pagsesearch.
-		/*
-		 * public void click_search(View v) {
-		 * 
-		 * String edittext_search = editText.getText().toString(); if
-		 * (edittext_search.equals("location")) {
-		 * 
-		 * ParseGeoPoint userLocation = (ParseGeoPoint) userObject .get("location");
-		 * ParseQuery<ParseObject> query = ParseQuery.getQuery("Locations");
-		 * query.whereNear("location", userLocation); query.setLimit(10);
-		 * query.findInBackground(new FindCallback<ParseObject>() {
-		 * 
-		 * @Override public void done(List<ParseObject> arg0, ParseException arg1) {
-		 * // TODO Auto-generated method stub
-		 * 
-		 * for (int i = 0; i < arg0.size(); i++) {
-		 * Toast.makeText(getApplicationContext(), arg0.get(i).getInt("location") +
-		 * "", Toast.LENGTH_LONG).show(); }
-		 * 
-		 * }
-		 * 
-		 * });
-		 * 
-		 * }
-		 */
-		
-		
-		
-		
-		
-		
+	public void click_search(View v) {
+		ParseObject p = new ParseObject("Locations");
+		ParseGeoPoint geo_point = new ParseGeoPoint();
+		p.put("location", geo_point);
+		p.saveInBackground();
 
 	}
 
